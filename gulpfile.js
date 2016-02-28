@@ -22,6 +22,7 @@ var config = {
     output: './build/js'
   },
 	html: {
+		main: './src/template/index.jade',
 		watch: './src/template/**/*.jade',
 		output: './build'
 	},
@@ -41,8 +42,10 @@ gulp.task('server', function() {
 });
 
 gulp.task('jade', function() {
-	gulp.src(config.html.watch)
-		.pipe(jade())
+	gulp.src(config.html.main)
+		.pipe(jade({
+			pretty: true
+		}))
 		.pipe(gulp.dest(config.html.output))
 });
 
