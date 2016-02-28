@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 		webserver = require('gulp-webserver'),
 		stylus = require('gulp-stylus'),
 		nib = require('nib'),
+		jade = require('gulp-jade'),
 		minifyCSS = require('gulp-minify-css'),
 		browserify = require('browserify'),
 		source = require('vinyl-source-stream'),
@@ -21,7 +22,8 @@ var config = {
     output: './build/js'
   },
 	html: {
-		watch: './build/*.html'
+		watch: './src/template/**/*.jade',
+		output: './build'
 	},
 	images: {
 		watch: ['./src/images/*.jpg', './src/images/*.png'],
@@ -36,6 +38,12 @@ gulp.task('server', function() {
 			port: 8080,
 			livereload: true
 		}));
+});
+
+gulp.task('jade', function() {
+	gulp.src(config.html.watch)
+		.pipe(jade())
+		.pipe(gulp.dest(config.html.output))
 });
 
 gulp.task('build:css', function() {
@@ -70,9 +78,9 @@ gulp.task('watch', function() {
 	gulp.watch(config.images.watch, ['images']);
 	gulp.watch(config.styles.watch, ['build:css']);
 	gulp.watch(config.scripts.watch, ['build:js']);
-	gulp.watch(config.html.watch, ['build']);
+	gulp.watch(config.html.watch, ['jade']);
 });
 
 gulp.task('build',['build:css' , 'build:js']);
 
-gulp.task('default', ['server' , 'watch' , 'build' , 'images']);
+gulp.task('default', ['server' , 'watch' , 'build' , 'images' , 'jade']);
