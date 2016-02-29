@@ -15,8 +15,6 @@ Before starting to run the command `npm install`
 
 More examples and demos can be found on [Examples and demos wiki page](http://github.com/bartaz/impress.js/wiki/Examples-and-demos).
 
-**Note:** The team has changed, so there will be many changes in the upcoming versions.
-
-There is also a book available about [Building impressive presentations with impress.js](http://www.packtpub.com/building-impressive-presentations-with-impressjs/book) by Rakhitha Nimesh Ratnayake.
+**Note:** This repository was created to help developers start a project in an easy and fast way.
 
 Copyright 2016 [Fronteando](http://github.com/fronteando) - Released under the MIT [License](LICENSE)
