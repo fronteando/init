@@ -8,11 +8,8 @@ transitions in modern browsers and inspired by the idea behind prezi.com.
 
 Before starting to run the command `npm install`
 
-
-Contributors Developers
----------------------------------------
-
-[devjluna](http://github.com/devjluna)
+## Contributors
+- Jimmy Luna ([@devjluna](https://github.com/devjluna))
 
 ### Examples and demos
 
