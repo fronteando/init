@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devjluna/fronteandoinit.git"
+    "url": "git+https://github.com/fronteando/init.git"
   },
   "author": "Jimmy Luna <jluna@fronteando.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/devjluna/fronteandoinit/issues"
+    "url": "https://github.com/fronteando/init/issues"
   },
-  "homepage": "https://github.com/devjluna/fronteandoinit#readme",
+  "homepage": "https://github.com/fronteando/init/#readme",
   "devDependencies": {
     "browserify": "^13.0.0",
     "gulp": "^3.9.1",
