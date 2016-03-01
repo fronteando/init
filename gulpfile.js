@@ -3,6 +3,8 @@ var gulp = require('gulp'),
 		stylus = require('gulp-stylus'),
 		nib = require('nib'),
 		jade = require('gulp-jade'),
+		plumber = require('gulp-plumber'),
+		notify = require("gulp-notify"),
 		minifyCSS = require('gulp-minify-css'),
 		browserify = require('browserify'),
 		source = require('vinyl-source-stream'),
@@ -51,9 +53,19 @@ gulp.task('jade', function() {
 
 gulp.task('build:css', function() {
 	gulp.src(config.styles.main)
+		.pipe(plumber())
 		.pipe(stylus({
+			set: [
+				"resolve url",
+				"include css",
+				"linenos",
+				"compress"
+			],
 			use: nib(),
 			'include css': true
+		})).on("error", notify.onError({
+			message: "<%= error.message %>",
+			title: "Stylus Error"
 		}))
 		.pipe(minifyCSS())
 		.pipe(gulp.dest(config.styles.output));
@@ -61,10 +73,11 @@ gulp.task('build:css', function() {
 
 gulp.task('build:js', function () {
 	return browserify(config.scripts.main)
-		.bundle()
-		.pipe(source('bundle.js'))
-		.pipe(buffer())
-		.pipe(gulp.dest(config.scripts.output))
+	.pipe(plumber())
+	.bundle()
+	.pipe(source('bundle.js'))
+	.pipe(buffer())
+	.pipe(gulp.dest(config.scripts.output))
 });
 
 gulp.task('images', function() {
